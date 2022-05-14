@@ -9,6 +9,7 @@ export default {
   argTypes: {
     color: { control: 'select', options: ['primary', 'secondary', 'tertiary'] },
     fontColor: { control: 'color' },
+    backgroundColor: { control: 'color' },
   },
 } as ComponentMeta<typeof MyLabel>;
 
@@ -48,4 +49,11 @@ CustomFormColor.args = {
   allCaps: false,
   size: 'h1',
   fontColor: '#5517ac',
+};
+
+export const CustomBgColor = Template.bind({});
+CustomBgColor.args = {
+  allCaps: false,
+  fontColor: '#fff',
+  size: 'h1',
 };
