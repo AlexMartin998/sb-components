@@ -1,7 +1,28 @@
 {
-  "name": "my-storybook",
+  "name": "my-storybook_am_components",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "license": "MIT",
+  "typings": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "repository": {
+    "url": "https://github.com/AlexMartin998/sb-components",
+    "type": "git"
+  },
+  "homepage": "https://github.com/AlexMartin998/sb-components",
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "peerDependencies": {
+    "react": ">=16",
+    "typescript": ">=4.0.0"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
@@ -10,17 +31,18 @@
     "@types/node": "^16.11.35",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
-    "react": "^18.1.0",
+    "react": ">=16",
     "react-dom": "^18.1.0",
-    "typescript": "^4.6.4",
+    "typescript": ">=4.0.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "start-storybook -p 6006",
-    "build": "build-storybook",
+    "build": "rimraf ./dist && tsc && npm run copy-files",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "chromatic": "npx chromatic --project-token=439b00cf7d1b"
+    "chromatic": "npx chromatic --project-token=439b00cf7d1b",
+    "copy-files": "copyfiles -u 1 src/**/*.css dist/"
   },
   "eslintConfig": {
     "extends": [
@@ -49,6 +71,16 @@
     "@storybook/react": "^6.4.22",
     "@storybook/testing-library": "^0.0.11",
     "babel-loader": "^8.2.5",
-    "chromatic": "^6.5.4"
-  }
+    "chromatic": "^6.5.4",
+    "copyfiles": "^2.4.1",
+    "semantic-release": "^19.0.2"
+  },
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    "@semantic-release/github",
+    "@semantic-release/npm",
+    "@semantic-release/git"
+  ]
 }
